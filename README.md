@@ -288,23 +288,6 @@
 
 2. `about.js`의 21번째 줄을 `about.js`로 수정합니다.
 
-### 3.6 Next.js 프로젝트 생성 (App Router)
-
-1. 다시 원래 폴더로 돌아와 **Next.js** 프로젝트를 생성합니다:
-
-    ```bash
-    npx create-next-app@latest
-    ```
-
-2. **프로젝트 이름**을 `app-router`로 입력합니다.
-
-3. 설치 과정에서 차례대로 다음과 같이 응답합니다:
-    - **No**
-    - **Yes**
-    - **No**
-    - **Yes**
-    - **Yes**
-
 ### 3.7 개발 서버 실행
 
 1. 생성된 `app-router` 폴더로 이동합니다:
