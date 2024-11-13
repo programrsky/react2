@@ -74,7 +74,7 @@
 
 ---
 
-### 2024년 9월 23일 수업 내용
+### 2024년 10월 23일 수업 내용
 
 #### Static Resource 관리
 - **이미지 파일**은 SEO에 큰 영향을 미치며, 다운로드 시간과 누적 레이아웃 이동(CLS)에 영향을 줍니다.
@@ -179,9 +179,188 @@
 
 ---
 
-## 프로젝트 예제
+### 2024년 9월 4일 수업 내용
+## 1. 기본 환경 설정
 
-### Blog Starter 프로젝트 생성
-1. **프로젝트 생성:**
-   ```bash
-   npx create-next-app --example blog-starter my-blog
+### 1.1 PowerShell 관리자 권한으로 실행
+
+1. **PowerShell을 관리자 권한으로 실행**합니다.
+    - 시작 메뉴에서 "PowerShell"을 검색한 후, 마우스 오른쪽 버튼을 클릭하고 "관리자 권한으로 실행"을 선택합니다.
+
+### 1.2 Chocolatey 설치
+
+1. **Chocolatey**를 설치하기 위해 다음 명령어를 입력합니다:
+
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process -Force; `
+    [System.Net.ServicePointManager]::SecurityProtocol = `
+    [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+    iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    ```
+
+2. 설치가 완료되면 **Chocolatey 버전**을 확인하여 설치가 정상적으로 되었는지 확인합니다:
+
+    ```powershell
+    choco -v
+    ```
+
+### 1.3 Git 설치
+
+1. **Chocolatey**를 사용하여 **Git**을 설치합니다. 다음 명령어를 실행합니다:
+
+    ```powershell
+    choco install git
+    ```
+
+2. 설치가 완료되면 Git 버전을 확인하여 정상 설치를 확인합니다:
+
+    ```bash
+    git --version
+    ```
+
+### 1.4 Node.js 및 NPM 버전 확인
+
+1. **Node.js**, **NPM**, **npx**의 설치 및 버전을 확인합니다:
+
+    ```bash
+    node -v
+    npm -v
+    npx -v
+    ```
+
+    - 각 명령어가 버전을 출력하면 정상적으로 설치된 것입니다.
+
+## 2. 추가 설정 (선택 사항)
+
+- **Visual Studio Code**를 ZIP 파일로 다운로드 받아 D 드라이브에 옮깁니다.
+    - 교수님의 진도에 맞추기 위한 설정으로, 필요에 따라 선택적으로 수행합니다.
+
+## 3. 프로젝트 설정
+
+### 3.1 프로젝트 폴더 생성
+
+- 원하는 드라이브(C 드라이브 또는 D 드라이브)에 프로젝트를 위한 폴더를 생성합니다.
+
+### 3.2 Create React App 전역 설치
+
+- **Create React App**을 전역으로 설치합니다:
+
+    ```bash
+    npm install -g create-react-app
+    ```
+
+### 3.3 Next.js 프로젝트 생성 (Page Router)
+
+1. **Next.js** 프로젝트를 생성합니다:
+
+    ```bash
+    npx create-next-app@latest
+    ```
+
+2. **프로젝트 이름**을 `page-router`로 입력합니다.
+
+3. 설치 과정에서 차례대로 다음과 같이 응답합니다:
+    - **Yes**: 프로젝트 루트에 설치
+    - **No**
+    - **No**
+    - **No**
+    - **Yes**
+
+### 3.4 개발 서버 실행
+
+1. 생성된 `page-router` 폴더로 이동합니다:
+
+    ```bash
+    cd page-router
+    ```
+
+2. 개발 서버를 실행합니다:
+
+    ```bash
+    npm run dev
+    ```
+
+3. 기본 브라우저로 열리며, 만약 **Microsoft Edge**로 열리면 **기본 앱 설정**을 변경하여 **Chrome**으로 변경할 수 있습니다.
+
+### 3.5 페이지 파일 수정
+
+1. `index.js` 파일을 복사하여 `about.js`로 이름을 변경합니다.
+
+2. `about.js`의 21번째 줄을 `about.js`로 수정합니다.
+
+### 3.6 Next.js 프로젝트 생성 (App Router)
+
+1. 다시 원래 폴더로 돌아와 **Next.js** 프로젝트를 생성합니다:
+
+    ```bash
+    npx create-next-app@latest
+    ```
+
+2. **프로젝트 이름**을 `app-router`로 입력합니다.
+
+3. 설치 과정에서 차례대로 다음과 같이 응답합니다:
+    - **No**
+    - **Yes**
+    - **No**
+    - **Yes**
+    - **Yes**
+
+### 3.7 개발 서버 실행
+
+1. 생성된 `app-router` 폴더로 이동합니다:
+
+    ```bash
+    cd app-router
+    ```
+
+2. 개발 서버를 실행합니다:
+
+    ```bash
+    npm run dev
+    ```
+
+### 3.8 페이지 파일 수정
+
+1. `page.js` 파일을 복사하여 `about.js`로 이름을 변경한 후 다시 원래대로 변경합니다.
+
+2. `src/app/about` 폴더를 생성하고 `about.js` 파일을 넣습니다.
+
+3. 파일 이름을 `page.js`로 재변경합니다.
+
+4. `page.js` 파일의 2번째 줄을 확인합니다:
+
+    ```javascript
+    import styles from "../page.module.css";
+    ```
+
+5. 10번째 줄을 확인합니다:
+
+    ```javascript
+    <code className={styles.code}>src/app/about/page.js</code>
+    ```
+
+## 4. 추가 프로젝트 생성
+
+1. 다시 D 드라이브로 돌아갑니다.
+
+2. **Next.js**의 예제 프로젝트를 생성합니다:
+
+    ```bash
+    npx create-next-app --example blog-starter
+    ```
+
+3. **프로젝트 이름**을 `my-blog`로 입력합니다.
+
+4. 생성된 `my-blog` 폴더를 엽니다.
+
+5. Git Bash에서 다음 명령어로 개발 서버를 실행합니다:
+
+    ```bash
+    npm run dev
+    ```
+
+6. 브라우저에서 열리는 것을 확인합니다.
+
+## 5. 참고 자료
+
+- [Vercel GitHub](https://github.com/vercel)
